@@ -5,11 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import org.hibernate.Session;
@@ -26,6 +22,8 @@ public class BeadandoController {
     private Label lbdel;
     @FXML
     public ComboBox cb1;
+    @FXML
+    public Button Torolgomb;
     @FXML
     private ComboBox cb2;
     @FXML
@@ -109,6 +107,8 @@ public class BeadandoController {
         this.gp2.setManaged(false);
         this.lbdel.setManaged(false);
         this.lbdel.setVisible(false);
+        this.Torolgomb.setVisible(false);
+        this.Torolgomb.setManaged(false);
     }
 
     @FXML
@@ -116,6 +116,7 @@ public class BeadandoController {
         this.ElemekTörlése();
         this.gp1.setVisible(true);
         this.gp1.setManaged(true);
+
     }
 
     @FXML
@@ -202,7 +203,6 @@ public class BeadandoController {
         session.update(nyer);
         t.commit();
     }
-
     public void bt2Click(ActionEvent actionEvent) {
         this.ElemekTörlése();
         this.Update();
@@ -210,20 +210,29 @@ public class BeadandoController {
         this.lb2.setManaged(true);
         this.lb2.setText("Update lefutott!");
     }
-
+    public void bt3Click(ActionEvent actionEvent){
+        this.ElemekTörlése();
+        this.Update();
+        this.lbdel.setVisible(true);
+        this.lbdel.setManaged(true);
+        this.lbdel.setText("Az "+cb1.getValue()+".-es id-val rendelkező sor törlésre került!");
+    }
     @FXML
     protected void menuDeleteClick() {
         this.ElemekTörlése();
-        this.lbdel.setVisible(true);
-        this.lbdel.setManaged(true);
         this.tv1.getColumns().removeAll(this.tv1.getColumns());
+        this.cb1.setVisible(true);
+        this.cb1.setManaged(true);
+        this.Torolgomb.setManaged(true);
+        this.Torolgomb.setVisible(true);
         Session session = this.factory.openSession();
-        System.out.println("Delete..");
         Transaction t = session.beginTransaction();
-        nyeremeny nyer = (nyeremeny) session.load(nyeremeny.class, 1);
+        int n = this.cb1.getVisibleRowCount();
+        nyeremeny nyer = (nyeremeny) session.load(nyeremeny.class, n);
         session.delete(nyer);
         t.commit();
-        this.lbdel.setText("Az 1.-es id-val rendelkező sor törlésre került!");
+
+
     }
 
     @FXML

@@ -115,6 +115,7 @@
 
     <Label fx:id="lb2">Update</Label>
     <ComboBox fx:id="cb1" />
+    <Button fx:id="Torolgomb" onAction="#bt3Click">Törlés</Button>
     <GridPane fx:id="gp2" hgap="2" vgap="4">
         <Label GridPane.rowIndex="0" GridPane.columnIndex="0">Találatok:</Label>
         <TextField fx:id="uTalálat" GridPane.rowIndex="0" GridPane.columnIndex="1"></TextField>
@@ -124,25 +125,17 @@
         <TextField fx:id="uÉrték" GridPane.rowIndex="2" GridPane.columnIndex="1"></TextField>
         <Button onAction="#bt2Click" GridPane.rowIndex="3" GridPane.columnIndex="1" >Update</Button>
     </GridPane>
-
     <TableView fx:id="tv2" >
     </TableView>
     <ComboBox fx:id="cb2" />
-    <Label fx:id="lbdel">Delete</Label>
 
+
+    <Label fx:id="lbdel">Delete</Label>
     <TableView fx:id="parh1"> </TableView>
     <GridPane fx:id="gp6" hgap="2" vgap="4">
         <Label fx:id="plb"></Label>
-
     </GridPane>
-
-
     <TableView fx:id="parh2"> </TableView>
     <GridPane fx:id="gp7" hgap="2" vgap="4">
-
     </GridPane>
-
-
-
-
 </VBox>
