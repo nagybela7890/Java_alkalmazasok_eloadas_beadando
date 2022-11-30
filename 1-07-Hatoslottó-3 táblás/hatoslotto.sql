@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `hatoslotto`
+-- Adatbázis: `hatoslotto2`
 --
-CREATE DATABASE IF NOT EXISTS `hatoslotto` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `hatoslotto`;
+CREATE DATABASE IF NOT EXISTS `hatoslotto2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `hatoslotto2`;
 
 -- --------------------------------------------------------
 
