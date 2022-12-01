@@ -128,15 +128,12 @@ public class BeadandoController {
         this.cb1.setManaged(true);
         Session session = this.factory.openSession();
         Transaction t = session.beginTransaction();
-        List<huzas> lista = session.createQuery("FROM nyeremeny ").list();
-        this.cb1.setPromptText("Válassz egy id-t!");
-        Iterator var4 = lista.iterator();
 
-        while(var4.hasNext()) {
-            nyeremeny nyer = (nyeremeny) var4.next();
-            this.cb1.getItems().add(nyer.NyereményId);
+        List<nyeremeny> lista = session.createQuery("FROM nyeremeny ").list();
+        cb1.setPromptText("Válassz egy id-t!");
+        for (nyeremeny  nyeremeny : lista) {
+            cb1.getItems().add(nyeremeny.NyereményId);
         }
-
     }
 
     void Create() {
@@ -192,7 +189,7 @@ public class BeadandoController {
     void Update() {
         Session session = this.factory.openSession();
         Transaction t = session.beginTransaction();
-        System.out.println("Update..");
+        System.out.println("Update");
         int n = this.cb1.getVisibleRowCount();
         nyeremeny nyer = (nyeremeny) session.load(nyeremeny.class, n);
         nyer.setNyereményId(Integer.parseInt(this.uNyereményId.getText()));
@@ -208,7 +205,7 @@ public class BeadandoController {
         this.Update();
         this.lb2.setVisible(true);
         this.lb2.setManaged(true);
-        this.lb2.setText("Update lefutott!");
+        this.lb2.setText("Update kész!");
     }
     public void bt3Click(ActionEvent actionEvent){
         this.ElemekTörlése();
@@ -313,7 +310,7 @@ public class BeadandoController {
     protected void Rest1Update1() {
         Session session = this.factory.openSession();
         Transaction t = session.beginTransaction();
-        System.out.println("Update..");
+        System.out.println("Update");
         int n = this.cb1.getVisibleRowCount();
         nyeremeny nyer = (nyeremeny) session.load(nyeremeny.class, n);
         nyer.setNyereményId(Integer.parseInt(this.uNyereményId.getText()));
@@ -332,7 +329,7 @@ public class BeadandoController {
         this.lbdel.setManaged(true);
         this.tv1.getColumns().removeAll(this.tv1.getColumns());
         Session session = this.factory.openSession();
-        System.out.println("Delete..");
+        System.out.println("Delete");
         Transaction t = session.beginTransaction();
         nyeremeny nyer = (nyeremeny) session.load(nyeremeny.class, 2);
         session.delete(nyer);
@@ -385,7 +382,7 @@ public class BeadandoController {
     protected void Rest2Update1() {
         Session session = this.factory.openSession();
         Transaction t = session.beginTransaction();
-        System.out.println("Update..");
+        System.out.println("Update");
         int n = this.cb1.getVisibleRowCount();
         nyeremeny nyer = (nyeremeny) session.load(nyeremeny.class, n);
         nyer.setNyereményId(Integer.parseInt(this.uNyereményId.getText()));
@@ -404,7 +401,7 @@ public class BeadandoController {
         this.lbdel.setManaged(true);
         this.tv1.getColumns().removeAll(this.tv1.getColumns());
         Session session = this.factory.openSession();
-        System.out.println("Delete..");
+        System.out.println("Delete");
         Transaction t = session.beginTransaction();
         nyeremeny nyer = (nyeremeny) session.load(nyeremeny.class, 3);
         session.delete(nyer);
